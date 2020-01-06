@@ -1,0 +1,11 @@
+name: build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Package Projects
+      run: echo fine
