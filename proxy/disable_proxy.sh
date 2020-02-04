@@ -1,4 +1,4 @@
 #!/usr/bin/env bash 
 
-git config --unset http.proxy
-# git config --unset https.proxy
+git config --global --unset http.proxy
+git config --global --unset https.proxy
