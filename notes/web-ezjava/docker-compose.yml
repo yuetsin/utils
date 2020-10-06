@@ -1,0 +1,38 @@
+version: '2.4'
+services:
+  ezjava:
+    build: ./ezjava
+    ports:
+      - "0.0.0.0:30050:8080"
+    restart: always
+    networks:
+      internal_network:
+        ipv4_address: 10.0.20.10
+      out_network:
+        ipv4_address: 10.0.30.10
+  hellox:
+    build: ./hellox
+    restart: always
+    networks:
+      internal_network:
+        ipv4_address: 10.0.20.11
+  rmiserver:
+    build: ./rmiserver
+    restart: always
+    networks:
+      internal_network:
+        ipv4_address: 10.0.20.12
+networks:
+    internal_network:
+        internal: true
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.0.20.0/24
+    out_network:
+        driver_opts:
+            com.docker.network.driver.mtu: 1400
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.0.30.0/24
