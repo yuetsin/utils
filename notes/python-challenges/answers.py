@@ -1,3 +1,5 @@
+skipped = [18, 19, 24, 26, 27, 32, 33, 37]
+
 results = {
     1: "'Life is short. I use Python.'",
     # Agree.
@@ -145,7 +147,7 @@ results = {
     # 而 str()，则总是会将其作为整体对待。
     # 传入一个单元素元组，就好了。
 
-    24: "hi",
+    24: "??????????????",
     # 要求一个字符串。
     # 用 ascii 编码前後、居然 splitlines 的结果不同。
     # 这怎么可能呢？难道，ascii encode 改变了 \n、\r？
@@ -156,7 +158,7 @@ results = {
     # 参见 https://en.wikipedia.org/wiki/Letter_case 的 Exceptional letters and digraphs 一节。
     # 应该还有很多其他语言可以这么操作。
 
-    # 26: "hi",
+    26: "???????????????????",
     # 不允许有任何的 ()、. Ee（这就是在针对 tuple、nan 和 inf）。要让 json load dump 之後，跟原来的不一样。
     # nan inf 都能很好 dump。complex 直接拒绝 dump。
     # ellipsis 不能 dump…
@@ -164,6 +166,88 @@ results = {
     # 但是，要求 repr 出来不能有 e 和括号！tuple 是一定会出来括号的，哪怕只有一个元素。
     # 要了命了。
 
-    # 就算输入 4, 来凑 tuple 也无济于事；他检查的是 repr(answer)。
+    # 就算输入 "4," 来凑 tuple 也无济于事；他检查的是 repr(answer)。
+    # 这，只能先等等了…
 
+    27: "??????????????????",
+    # 算了，我对字符编码一窍不通。
+
+    28: r"'hello\r\ni love you\r\nhope you enjoy your holiday\r\n', '\r'",
+    # 输入一个元组。读入 s 和 newline，以 newline 为分界读取 lines。
+    # 然後，把 lines join 起来，要让他跟原来的 s 不等。
+
+    29: '"%s"' % r"'hello\r\ni love you\r\nhope you enjoy your holiday\r\n', '\r'",
+    # 我是打错题号了，但是为什么 28 的答案能通过 29？？？
+    # 算了…
+
+    30: r"'awesome\n'",
+    # 加一换行就行了
+
+    31: "'{\\\\\}'",
+    # 试出来的。
+    # 估摸着斜杠一多就得出问题。啊果然。
+
+    32: "???????????????",
+    # 若干个数字组成。
+    # 第一个 char 不是 '0'，
+    # int() 要是 0？
+    # 这可能吗？？？
+
+    33: "???????????????",
+    # len(set(ans1 + ans2)) == len(ans1 + ans2)
+    # 也就是说，ans1 + ans2 里头没有重的东西。
+    # 况且，都要满足两个条件：
+    # 1. 单独解析（parse）都报错。
+    # 2. 加上一堆括号就正确。
+    # 里面还不能有特殊符号 ()[]{}''""\_#……。
+    # 这我一个都找不出来，你让我找两个（还得不重复）？
+    # 我是垃圾，走了
+
+    34: "import math as x",
+    # 只有 0 ～ 9，空格、字母、下划线。
+    # 要让 y = x 跑起来。但是又不可能用赋值操作符给予 x 初始值。
+    # return 也不行，这不在函数里。
+    # throw 就更不用说了——那直接退出去，没有分数了。
+    # 只能出此下策了…
+
+    35: "'bool', 'type(__debug__)'",
+    # 要给出两个 identifier，使得 ID(ID) 是真。
+    # bool(bool) 是 True，因为它的构造函数只要有参数就是真。
+    # 很遗憾, type(type) 会返回一个 Type，但是 class <type> != True.
+    # help(help) 好像可以打开关于 help 的帮助页面…但是不能返回 True。
+    # 在交互式页面里，_ 会被设定为上条语句的返回值。但是这没什么用。
+    # 服务器中两条语句不是连续执行的。
+    # type(True) 可以得到 bool 类型，但是带有括号 () 不能成为合法的 identifier。
+    # BOOL
+
+    36: 'type',
+    # type(type) is type. 顺口溜？
+
+    37: "'help', 'print'",
+    # 两个标识符号。
+    # x(y) is y(x)。
+    # 真有意思，这两位。
+    # repr(print) 和 print(repr) 很相近了，但很可惜 print 不返回值。
+    # print(help) 和 help(print) 都不返回的，很好。
+    # 可惜服务器不会自己按 q，停不下来…
+    # 这里实际上要求两组数据…
+
+    38: "'set'",
+    # 要合法地執行 ID[ID]。
+    # 剛剛很多是因為有 built-in functions。
+    # 但是可以 [] 的就很少了。
+    # 甚至，遵循 [] 常規語義就很難寫。
+    # 奇怪的是，存在 set[set] 合法！
+    # 类型是 <class 'types.GenericAlias'>。
+    # 这是 Python 用来做类型检查用的，代表（这个 set 里面只能放 set）。
+    # 当然，也存在 list[list]。
+    # 例如，可以这么限定一个类型：list[int]
+    # 代表只能放 int 的 list 类型。
+
+    39: "'type', 'object'",
+    # 类型是自己的，我只记得一个 type。
+    # 这里要求两个，还要求他们互为 instance。
+    # https://docs.python.org/3/library/stdtypes.html
+    # 这里列出了所有的内置类型。
+    # 还有一个就是万物的基类 object。
 }

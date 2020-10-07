@@ -8,11 +8,14 @@ r = remote('111.186.57.85', 30666)
 
 try:
     for i in range(1, 51):
+        if i in skipped:
+            continue
+
         if not i in results:
             break
 
         # r.recvuntil("Level:", drop=False)
-        r.recvrepeat(timeout=0.4)
+        r.recvrepeat(timeout=0.3)
         r.sendline("%d" % i)
         print("select problem %d" % i)
 
