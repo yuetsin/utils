@@ -173,6 +173,7 @@ results = {
     # 但是，要求 repr 出来不能有 e 和括号！tuple 是一定会出来括号的，哪怕只有一个元素。
     # 要了命了。
     # 一件事：JSON 不允许 int 作为 key，所以 hash 完会变成 str。
+    # done。
 
     27: "??????????????????",
     # 算了，我对字符编码一窍不通。
@@ -215,7 +216,7 @@ results = {
     # throw 就更不用说了——那直接退出去，没有分数了。
     # 只能出此下策了…
 
-    35: "'bool', 'type(__debug__)'",
+    35: "'bool', 'callable'",
     # 要给出两个 identifier，使得 ID(ID) 是真。
     # bool(bool) 是 True，因为它的构造函数只要有参数就是真。
     # 很遗憾, type(type) 会返回一个 Type，但是 class <type> not is True.
@@ -223,7 +224,15 @@ results = {
     # 在交互式页面里，_ 会被设定为上条语句的返回值。但是这没什么用。
     # 服务器中两条语句不是连续执行的。
     # type(True) 可以得到 bool 类型，但是带有括号 () 不能成为合法的 identifier。
-    # BOOL
+    # Exception(Exception) not is True.
+    # id(id) 会返回一个大数字，但 not is True。
+    # hash(hash) 同理。
+    # # 这什么破题目
+    # 要想 is True，那好像真的只能给一个 True。
+    # 除了 bool 的构造函数，还有谁可以做到？
+    # callable. 判断这个对象是否可以被调用。
+    # callable 是 callable 的。
+    # 感谢 Python docs。
 
     36: "'type'",
     # type(type) is type. 顺口溜？

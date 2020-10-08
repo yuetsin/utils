@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
 from random import randint
-toks = []
 
-answer = ''.join(toks)
+answer = '1\n2\r\n3\r'
 
 answer_bytes = answer.encode('ascii')
 # print(answer)
