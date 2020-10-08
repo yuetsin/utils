@@ -17,5 +17,5 @@ def level_27(answer):
 
 
 if __name__ == '__main__':
-    answer = bytes([0x27, 0xe1, 0xfe, 0xfd])
+    answer = u'Cap\\xit\xe1\x99n\n'.encode()
     level_27(answer)

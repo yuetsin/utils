@@ -288,7 +288,7 @@ def level_20(answer):
 
 def level_21(answer):
     check(isinstance(answer, bytes))
-    check(not re.fullmatch(r'[0-9A-Za-z+/]*',
+    check(not re.fullmatch(r'[0-9A-Za-z+/=]*',
                            base64.encodebytes(answer).decode().rstrip('\n')))
 
 
@@ -517,6 +517,7 @@ def level_45(answer):
     check_different_type_answers_at_least(
         list(map(ast.literal_eval, answer)), 3)
     for ans in answer:
+        print("going to check", ans)
         exec_code(textwrap.dedent(f'''\
             with CheckRaises(Exception):
                 exec({f"{ans}.__class__"!r})

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from answers import results
+from answers import results, skipped
 from pwn import *
 
 r = remote('111.186.57.85', 30666)
