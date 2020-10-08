@@ -1,4 +1,4 @@
-skipped = [24, 27, 32, 33, 35, 37, 41, 42, 48, 49, 50]
+skipped = [24, 27, 32, 33, 37, 41, 42, 48, 49, 50]
 
 results = {
     1: "'Life is short. I use Python.'",
@@ -237,14 +237,15 @@ results = {
     36: "'type'",
     # type(type) is type. 顺口溜？
 
-    37: "'help', 'print'",
+    37: "'callable', 'bool'",
     # 两个标识符号。
-    # x(y) is y(x)。
-    # 真有意思，这两位。
-    # repr(print) 和 print(repr) 很相近了，但很可惜 print 不返回值。
-    # print(help) 和 help(print) 都不返回的，很好。
-    # 可惜服务器不会自己按 q，停不下来…
-    # 这里实际上要求两组数据…
+    # x(y) is y(x) 要一样。
+    # bool(callable)
+    # callable(bool)
+    # 35 题过来很容易这么想…
+    # 但是，他要求 x < y!
+    # 这两位可都没法比大小的。
+    # 这…怎么办…
 
     38: "'set'",
     # 要合法地執行 ID[ID]。
