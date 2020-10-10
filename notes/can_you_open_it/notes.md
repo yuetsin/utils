@@ -14,6 +14,10 @@ Dump 文件的方式，这里用的是 `od <file> -x --endian=big -v -An`。
 
 这样弄出来的就可以直接粘贴进 Hex Fiend 了。
 
+> Update：出题人良心发现，为了体现这不是 Reverse 题，把 loaders 和源代码放出来了
+>
+> 我谢谢您！
+
 ## Level 0
 
 > Warming up 做了半天……
@@ -35,7 +39,22 @@ password_level1_BUVud0b4rGtFIhFWib8tnp36UnHqaesB
 
 ## Level 1
 
-和 Level 0 完全一致
+和 Level 0 完全一致。
+
+但其实这里已经启用了 seccomp，并且禁用掉了 `open`（用绝对路径打开）。只是我们用 `openat` 仍然可以正常 cat 出 secret。
+
+```shell
+shell$ seccomp-tools dump ./loader1
+ line  CODE  JT   JF      K
+=================================
+ 0000: 0x20 0x00 0x00 0x00000004  A = arch
+ 0001: 0x15 0x00 0x04 0xc000003e  if (A != ARCH_X86_64) goto 0006
+ 0002: 0x20 0x00 0x00 0x00000000  A = sys_number
+ 0003: 0x35 0x02 0x00 0x40000000  if (A >= 0x40000000) goto 0006
+ 0004: 0x15 0x01 0x00 0x00000002  if (A == open) goto 0006
+ 0005: 0x06 0x00 0x00 0x7fff0000  return ALLOW
+ 0006: 0x06 0x00 0x00 0x00000000  return KILL
+```
 
 > 或许这是个伏笔
 
@@ -161,21 +180,6 @@ define SECCOMP_MODE_FILTER		2
 
 幸好，他这里用的是 `SECCOMP_MODE_FILTER`；代表用第三个 `struct sock_fprog *` 来限定允许的范围。
 
-这个指针可以在 `gdb` 里看到。打印出来 `len`，可以看到
-
-```shell
-gdb$ p /s *0x7fffffffde80
-8
-```
-
-因为对齐规则的关系，虽然 `unsigned short` 的内存只及 `0x7fffffffde82`，但下一个指针类型的变量必须排到 `0x7fffffffde88`。
-
-```shell
-
-```
-
-
-
 顺带一提，对应的数据结构是这样的：
 
 ```c
@@ -191,4 +195,43 @@ struct sock_fprog {     /* Required for SO_ATTACH_FILTER. */
        struct sock_filter *filter;
 };
 ```
+
+用 `seccomp-tools` dump 出来的伪代码是这样的：
+
+```shell
+seccomp-tools dump ./loader2
+ line  CODE  JT   JF      K
+=================================
+ 0000: 0x20 0x00 0x00 0x00000004  A = arch
+ 0001: 0x15 0x00 0x05 0xc000003e  if (A != ARCH_X86_64) goto 0007
+ 0002: 0x20 0x00 0x00 0x00000000  A = sys_number
+ 0003: 0x35 0x03 0x00 0x40000000  if (A >= 0x40000000) goto 0007
+ 0004: 0x15 0x02 0x00 0x00000002  if (A == open) goto 0007
+ 0005: 0x15 0x01 0x00 0x00000101  if (A == openat) goto 0007
+ 0006: 0x06 0x00 0x00 0x7fff0000  return ALLOW
+ 0007: 0x06 0x00 0x00 0x00000000  return KILL
+
+```
+
+> 顺带一提，这个库作者专门拿出来吹的「Colorful Output」功能，在 Debian 的垃圾浅色终端背景下快把我看瞎了
+
+因为有 `ARCH_X86_64` 判定，而且有 `>= 0x40000000` 检测（因为所有的 32 位 SysCall 都有 `X32_SYSCALL_BIT = 0x40000000`），所以偷 arch 换柱就别想了。
+
+除此之外，就只禁止掉了 `open` 和 `openat`。但是基本所有的 Linux 命令都会 `openat` 来动态链接 libc。
+
+但是，就像 ICS 那一章里讲到的，负责链接的 Dynamic Linker 不能是动态链接的——否则容易产生 `WinRarInstaller.rar` 这样的搞笑事件。
+
+某一些 Linux 发行版提供这个文件。很遗憾，这里没有。
+
+而 `ld-linux.so` 在不指定某些参数的情况下也可以运行。并且，甚至还有这种用法：
+
+```shell
+bash$ /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 /bin/cat secret2.txt
+```
+
+遗憾的是，`./loader2` 的 seccomp 机制仍然会铁面无私地把他们拦住。错误发生在 `open /bin/cat` 这一步。
+
+如果用 `--inhibit-cache` 禁止读取 LD Cache，几乎所有的程序都不能正常执行了。
+
+发现 `/tmp` 目录我们有写、chmod 的权限。或许可以在这里做点什么。
 
