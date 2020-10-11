@@ -138,7 +138,7 @@ public release
 
 根据 Hint 1: tcpdf，他有一个 `/pdf` 接口，直接通过 HTML 生成 PDF。
 
-Tcpdf 的漏洞就是可以任意执行 phar。
+这个 tcpdf 有个反序列化漏洞，可以任意执行 phar。
 
 那么，我们就开始生成：
 
@@ -160,3 +160,49 @@ $phar->stopBuffering();
 构造好了这个 phar，但是要把它放到服务器上才能用。遗憾的是，服务器关于上传部分的代码被注释掉了。
 
 好奇怪…按理说这里应该就这种攻击方式了。但是找不到办法去传入 phar。
+
+捏着鼻子把 baijunyao 的代码跟文档读了一遍。然後跟「魔改版」diff 了一下。
+
+几乎一行新代码没加，倒是把原来的代码 Comment 了一大堆。
+
+> 你这不叫「魔改」，叫「阉割」
+
+不过，这道题里割掉了这一个 `_empty` 方法，导致简单的任意模版调用不可行了。
+
+```php
+    /**
+     * 拦截空方法 自动加载html
+     * @param  string $methed_name 空方法
+     */
+    // Sorry for this...
+    // public function _empty($methed_name){
+    //     $this->display($methed_name);
+    //     exit(0);
+    // }
+```
+
+新加的代码，只有一行：
+
+![image-20201011163237637](notes.assets/image-20201011163237637.png)
+
+```
+    public function __toString()
+    {
+        file_put_contents("step4", "data");
+        return $this->serializeToXml();
+    }
+```
+
+翻了一下原仓库，是没有这个更动的。
+
+> 五年来没动过；
+>
+> > 尽管这行代码怎么看都不像正常功能代码；
+> >
+> > 但这个作者的狂乱代码风格让我不禁有些怀疑；
+> >
+> > > 已经被他所有标点符号都用分号（竟然还是中文分号！）代替的文风洗脑了；
+
+换言之，如果我们调用一次这个类型的 `__toString` 魔法方法，就会在当前目录下创建一个 `step4` 文件，并向其中写入 `data`。
+
+那么该怎么调用呢？这又是个
