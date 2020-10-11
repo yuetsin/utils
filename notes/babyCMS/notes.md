@@ -130,11 +130,15 @@ MITRE assigned CVE-2018-17057
 public release
 ```
 
-这个垃圾网站可以通过 `http://111.186.57.85:30042/index.php/Home/Index/xls` 和 `http://111.186.57.85:30042/index.php/Home/Index/csv` Dump 数据。这还算是正常的。
+这个垃圾网站可以通过 `http://111.186.57.85:30042/index.php/Home/Index/xls` 和 `http://111.186.57.85:30042/index.php/Home/Index/csv` Dump 数据。但是，这两个接口的路径都是写死的——没办法直接把 flag 打印出来。
 
-最奇怪的是…他居然用 `/pdf` 接口，直接通过 HTML 生成 PDF。
+> 可惜
 
-> 这完全不像一个正常服务器该干的事情
+这还算是正常的。
+
+根据 Hint 1: tcpdf，他有一个 `/pdf` 接口，直接通过 HTML 生成 PDF。
+
+Tcpdf 的漏洞就是可以任意执行 phar。
 
 那么，我们就开始生成：
 
@@ -153,3 +157,6 @@ $phar->stopBuffering();
 >
 ```
 
+构造好了这个 phar，但是要把它放到服务器上才能用。遗憾的是，服务器关于上传部分的代码被注释掉了。
+
+好奇怪…按理说这里应该就这种攻击方式了。但是找不到办法去传入 phar。
