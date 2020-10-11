@@ -274,8 +274,11 @@ int main(void)
         {
             char *buf = (char *)(v9 + v6); // 0x1275
             *buf += 13;
-            int64_t v11 = v9 + 1;
-            v9 = v11;
+            v9 += 1
+
+            // Python 乱入
+            for ch in buf:
+                *buf += 13
             while (v11 != 32)
             {
                 // 0x1270
