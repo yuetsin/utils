@@ -132,45 +132,11 @@ yue$ ./hash_extender --data data --secret 6 --append append --signature 6036708e
 
 ![getshell](notes.assets/getshell.png)
 
-唯一的问题就是……就是……我们附加的 Append 会和 Body 之间不可避免地存在一些填充字节。
+在后面加入 Getshell 的代码就好了。
 
-![image-20201012083050971](notes.assets/image-20201012083050971.png)
+`shellcraft` 弄出来的过不了。手动写了一段用 `pwnlib.asm` 编译的就好了。
 
-主要是我们的 Body data 不够长。
+注意执行 Shellcode 的时候，设置了一个 1 秒钟的 Alarm。超过就自动结束，所以我们的 Shell 活不过一秒的。
 
-因此，我们试着把 Message 弄长一点，看看能不能冲抵这个 Padding。
+> 但是，已经够了。
 
-但是，遗憾的是这个 Message 限长 24。
-
-因此，只能寄希望于 Secret 字节数够长，填满空隙！
-
-Padding 的目标是使得长度 $=56 \pmod {64}$。而密码头的长度是 32 ～ 64。
-
-Body 最短长度是 40（用 `/bin/sh` 作为 Message），最长长度是 70（在 Message 中加一堆 `/`）。
-
-70 + 50 = 120 = 56 + 64。
-
-没有填充的情况下，生成的 Forged Shellcode 是这样的：
-
-```assembly
-# normal payload
-55:	80 00 00
-58: 00 00
-5a: 00 00
-5c: 03 b8
-# normal append
-```
-
-可以看到，多出来这么 9 个字节。哪儿来的？
-
-试着把 Secret 长度调短一字节（反正是在本地），可以看到阑尾字节变成了：
-
-```assembly
-# normal payload
-55: 80 00 00
-58: 00 00
-5a: 00 00
-5c: 00 03 b0
-```
-
-十个字节。可以看出来，
