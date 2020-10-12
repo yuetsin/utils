@@ -120,7 +120,57 @@ yue$ ./hash_extender --data data --secret 6 --append append --signature 6036708e
 
 总的尝试次数也就 512 次，可以接受。
 
+> 实际上 Hash Extender 提供了尝试不同长度的参数！太厉害了！
+
 但是，好遗憾的是，这个 Python 脚本设置了 120 秒的超时。
 
 我们没时间等下去！
 
+得用 pwntools 自动化。
+
+好了，现在应该已经伪造签名了。
+
+![getshell](notes.assets/getshell.png)
+
+唯一的问题就是……就是……我们附加的 Append 会和 Body 之间不可避免地存在一些填充字节。
+
+![image-20201012083050971](notes.assets/image-20201012083050971.png)
+
+主要是我们的 Body data 不够长。
+
+因此，我们试着把 Message 弄长一点，看看能不能冲抵这个 Padding。
+
+但是，遗憾的是这个 Message 限长 24。
+
+因此，只能寄希望于 Secret 字节数够长，填满空隙！
+
+Padding 的目标是使得长度 $=56 \pmod {64}$。而密码头的长度是 32 ～ 64。
+
+Body 最短长度是 40（用 `/bin/sh` 作为 Message），最长长度是 70（在 Message 中加一堆 `/`）。
+
+70 + 50 = 120 = 56 + 64。
+
+没有填充的情况下，生成的 Forged Shellcode 是这样的：
+
+```assembly
+# normal payload
+55:	80 00 00
+58: 00 00
+5a: 00 00
+5c: 03 b8
+# normal append
+```
+
+可以看到，多出来这么 9 个字节。哪儿来的？
+
+试着把 Secret 长度调短一字节（反正是在本地），可以看到阑尾字节变成了：
+
+```assembly
+# normal payload
+55: 80 00 00
+58: 00 00
+5a: 00 00
+5c: 00 03 b0
+```
+
+十个字节。可以看出来，

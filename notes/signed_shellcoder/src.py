@@ -8,15 +8,21 @@ import signal
 import sys
 from ctypes import CDLL, CFUNCTYPE, c_int, c_int64, c_uint64, c_void_p
 
-from pwnlib.asm import asm
+from pwnlib.asm import asm, disasm
 from pwnlib.constants import (MAP_ANONYMOUS, MAP_PRIVATE,  # pylint: disable=no-name-in-module
                               PROT_EXEC, PROT_READ, PROT_WRITE)
 from pwnlib.context import context
 from pwnlib.util.packing import u64
 
+DEFINITE = True
+
 SOURCE = pathlib.Path(__file__).read_text(encoding='utf-8')
-SECRET_KEY = secrets.token_bytes(secrets.choice(
-    range(32, 64)))  # pylint: disable=W1638
+
+if DEFINITE:
+    SECRET_KEY = secrets.token_bytes(49)  # pylint: disable=W1638
+else:
+    SECRET_KEY = secrets.token_bytes(secrets.choice(
+        range(32, 64)))  # pylint: disable=W1638
 BKEY = secrets.choice(range(16))  # pylint: disable=range-builtin-not-iterating
 GLOBAL_ALARM_TIME = 120
 SHELLCODE_ALARM_TIME = 1
@@ -56,8 +62,16 @@ pop r15
 ret
 ''')
 
+log = open('loggggg', 'w')
+
 
 def exec_shellcode(shellcode):
+
+    with open('f', 'wb') as f:
+        f.write(shellcode)
+    log.write('%s %s' % ("I'm going to execute shellcode\n", shellcode))
+    print(disasm(shellcode))
+
     length = len(shellcode)
     addr = libc.mmap(0, length, PROT_READ | PROT_WRITE | PROT_EXEC,
                      MAP_PRIVATE | MAP_ANONYMOUS, -1, 0)
@@ -68,6 +82,8 @@ def exec_shellcode(shellcode):
     ret = func()
     if libc.munmap(addr, length) < 0:
         sys.exit('munmap failed')
+
+    print("It's a good day! secret len = %d" % len(SECRET_KEY))
     return ret
 
 
@@ -117,6 +133,9 @@ def sign_shellcode():
     asm_code += 'mov rax, 1\n'
     asm_code += 'syscall\n'
     asm_code += f'add {reg}, rcx\n'
+
+    with open('shellcode', 'w') as f:
+        f.write(sign_data(asm(asm_code)))
     print(f'Your signed shellcode is: {sign_data(asm(asm_code))}')
 
 
@@ -130,7 +149,7 @@ def execute_signed_shellcode():
         print('Shellcode too long')
         return
     print('Signature valid, executing your shellcode...')
-    signal.alarm(SHELLCODE_ALARM_TIME)
+    # signal.alarm(SHELLCODE_ALARM_TIME)
     exec_shellcode(prologue + shellcode + epilogue)
     signal.alarm(GLOBAL_ALARM_TIME)
 
