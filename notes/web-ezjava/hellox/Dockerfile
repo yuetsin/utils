@@ -11,4 +11,4 @@ COPY flag /flag
 WORKDIR /opt/app
 
 USER ctf
-CMD ["java", "-jar", "/opt/app/hellox.jar"]
+CMD ["java", "-Djdk.serialFilter=!com.sun.syndication.feed.impl.ObjectBean;!com.rometools.rome.feed.impl.ObjectBean;", "-jar", "/opt/app/hellox.jar"]
