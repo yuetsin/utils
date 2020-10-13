@@ -45,7 +45,7 @@ buf(0, buf);
 
 > 原作者赐名 x84。
 
-实现的要点就是 x86 下有 `inc eax` 语句，and64 没有。一个简单的 `irmov` 会被解读成 `inc`。
+他给出的 Example 是这样的：
 
 ```assembly
     ; execve("/bin//sh", NULL, NULL);
@@ -106,3 +106,4 @@ x32:
 > > http://irfantoor.com/exploits/show/?id=39338
 >
 > > 一定是因为上 OS 课，写 AArch64 汇编写傻掉了…
+
