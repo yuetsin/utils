@@ -13,7 +13,9 @@ BTN_TOOL_FINGER       BTN_TOUCH             01c7
                 ABS_MT_TOUCH_MAJOR   8 : value 0, min 0, max 255, fuzz 0, flat 0, resolution 0
 ```
 
-标准的触摸协议协商头。声明了一个 $1439 \times 2959$ 的触摸屏幕。
+标准的触摸协议协商头。声明了一个 $2960 \times 1440$ 的触摸屏幕。
+
+> 那我估计你用的得是三星
 
 然后对照着 Linux 源代码翻译一下，用 PIL 画出来，就好了。
 
