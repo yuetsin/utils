@@ -1,4 +1,4 @@
-char* add()
+int add()
 {
     puts("Index:");
     int index = read_int();

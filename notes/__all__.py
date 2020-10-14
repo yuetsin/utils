@@ -9,6 +9,7 @@ __all__ = [
     'format_string',
     'homework',
     'mota',
+    'note',
     'shellcode1',
     'signed_shellcoder',
     'stack_overflow',

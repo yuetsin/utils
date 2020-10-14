@@ -4,46 +4,31 @@ char *ptrs[16];
 
 int main(int argc, const char **argv, const char **envp)
 {
-	int flag; // eax
+	int flag;
 
 	setbuf(stdout, 0LL);
 	puts("Start our heap journey from old-school style!");
 	puts("How many ways can you exploit this?");
 	while ( 1 )
 	{
-		while ( 1 )
+		flag = read_int();
+		switch (flag)
 		{
-			puts("1. Add");
-			puts("2. Delete");
-			puts("3. Edit");
-			puts("4. Show");
-			puts("Choice:");
-			flag = read_int();
-			if ( flag != 2 )
-				break;
-			delete();
-		}
-		if ( flag > 2 )
-		{
-			if ( flag == 3 )
-			{
-				edit();
-			}
-			else if ( flag == 4 )
-			{
-				show();
-			}
-			else
-			{
-invalid:
-				puts("Invalid");
-			}
-		}
-		else
-		{
-			if ( flag != 1 )
-				goto invalid;
+		case 1:
 			add();
+			break;
+		case 2:
+			delete();
+			break;
+		case 3:
+			edit();
+			break;
+		case 4:
+			show();
+			break;
+		default:
+			puts("Invalid");
+			break;
 		}
 	}
 }
