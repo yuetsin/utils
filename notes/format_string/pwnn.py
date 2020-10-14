@@ -12,10 +12,10 @@ context.os = 'linux'
 context.arch = 'amd64'
 context.bits = 64
 
-proc = ELF('./format_string')
-libc = ELF('./libc-2.23.so')
+proc = ELF('./bin/format_string')
+libc = ELF('./bin/libc-2.23.so')
 
-# r = process('./format_string')
+# r = process('./bin/format_string')
 r = remote('111.186.57.85', 30014)
 # gdb.attach(r)
 r.recvline()

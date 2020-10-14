@@ -49,13 +49,6 @@ print('after inserting with maps, _vec is')
 print(''.join(str(v) for v in _vec))
 print(''.join(tips))
 
-# 现在这是 81 个数。
-# 要求他们各自不一样。
-# 这不就是数独吗？
-# 刚好，给出 17 个位置，这就是一个有唯一解的数独。
-# 这也说得通了：练习 C++ 编程写数独。
-# # 李显龙再世（不
-
 for j in range(0, 9):
 
     _set_a = set(_vec[9 * j: 9 * j + 9])

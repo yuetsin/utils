@@ -5,7 +5,7 @@ from pwnlib.asm import asm
 from pwnlib.context import context
 
 # r = remote('111.186.57.85', 30012)
-r = process('./sc2')
+r = process('./bin/sc2')
 
 context.os = 'linux'
 context.arch = 'amd64'
