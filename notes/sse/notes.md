@@ -12,19 +12,19 @@
 
 首先，需要理解代码中大量的 128 位数字操作指令。
 
-`UNPCKLPD` 就是用来构造 128 位数字的。这个用 C 写调试起来非常笨拙。所以干脆用 Python 来写。
+`UNPCKLPD` 用来构造浮点数。
 
 ```python
 flags = b'0ops{___Y______________________}'
 
 assert(len(flags) == 32)
 
-mul_1 = int.from_bytes(flags[:8] + flags[:8],
-                       byteorder='little') * int.from_bytes(keybox_1, byteorder='little')
-mul_2 = int.from_bytes(flags[8:16] + flags[8:16],
-                       byteorder='little') * int.from_bytes(keybox_2, byteorder='little')
+mul_1 = float.from_bytes(flags[:8] + flags[:8],
+                       byteorder='little') * float.from_bytes(keybox_1, byteorder='little')
+mul_2 = float.from_bytes(flags[8:16] + flags[8:16],
+                       byteorder='little') * float.from_bytes(keybox_2, byteorder='little')
 
-buf = (mul_1 + mul_2) ^ int.from_bytes(keybox_3, byteorder='little')
+buf = (mul_1 + mul_2) ^ float.from_bytes(keybox_3, byteorder='little')
 
 print(buf)
 
@@ -33,7 +33,7 @@ if buf % 2 ** 128 != 0 or flags[0] != 48 or flags[8] != 89:
     exit(-1)
 ```
 
-前半部分大数乘法看不懂。
+前半部分浮点数乘法看不懂…
 
 但是，後面这部分还是比较清楚的：
 
