@@ -15,11 +15,10 @@ int main(int argc, const char** argv, const char** envp)
 
     srand(time(NULL));
 
-    persons[0] = (struct Person *)malloc(40);
-
-    persons[0].power = 9999999999999LL;
+    persons[0] = (struct Person *)malloc(sizeof(struct Person));
+    persons[0]->power = 9999999999999LL;
     
-    strncpy(persons[0].name, "BOSS", 4);
+    strncpy(persons[0]->name, "BOSS", 4);
 
     int flag; // [rsp+Ch] [rbp-4h]
     while (1) {

@@ -6,12 +6,20 @@ __all__ = [
     'babyssrf',
     'bt',
     'easy_adb',
+    'ezjava_flag1',
     'format_string',
+    'game',
     'homework',
-    'mota',
+    'mogictower',
     'note',
+    'python_challenges_flag1',
+    'python_challenges_flag2',
+    'python_challenges_flag3',
+    'python_challenges_flag4',
     'shellcode1',
     'signed_shellcoder',
     'stack_overflow',
-    'testpwntools'
+    'test_your_nc',
+    'test_your_pwntools',
+    'welcome'
 ]
