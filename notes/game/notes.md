@@ -123,6 +123,6 @@ Fight 嘛…这个问题就很大了。
 
 ![image-20201015085403405](notes.assets/image-20201015085403405.png)
 
-UAF 是 Usage after Free 的简写。显然这里就出现了「意外释放 Boss Block，在此之後又试图使用」的问题。
+`UAF` 是 Use after Free 的简写。显然这里就出现了「意外释放 Boss Block，在此之後又试图使用她」的问题。
 
 > 释放过了，就不是你的了。
