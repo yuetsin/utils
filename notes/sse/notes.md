@@ -15,7 +15,7 @@
 `UNPCKLPD` 就是用来构造 128 位数字的。这个用 C 写调试起来非常笨拙。所以干脆用 Python 来写。
 
 ```python
-flags = b'0ops{0_______Y_________________}'
+flags = b'0ops{___Y______________________}'
 
 assert(len(flags) == 32)
 
