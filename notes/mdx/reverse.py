@@ -60,11 +60,11 @@ def judge(s: str) -> bool:
         v10 += (v9 + v13 + keybox_1[m] + nums[v14]) << keybox_2[m]
         v9 = v1
 
-    # simulates C-int overflow
-    v9 %= 2**32
-    v10 %= 2**32
-    v11 %= 2**32
-    v12 %= 2**32
+        # simulates C-int overflow
+        v9 %= 2**32
+        v10 %= 2**32
+        v11 %= 2**32
+        v12 %= 2**32
 
     print(v9, v10, v11, v12)
     current_bytes = v9.to_bytes(4, byteorder='little') + v10.to_bytes(4, byteorder='little') + \

