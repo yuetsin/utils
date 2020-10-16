@@ -2,7 +2,7 @@
 
 from random import randint
 
-answer = '1\n2\r\n3\r'
+answer = '\r,'
 
 answer_bytes = answer.encode('ascii')
 # print(answer)

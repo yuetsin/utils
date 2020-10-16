@@ -22,13 +22,15 @@
 
 里面大部分都是垃圾单词。不可能作为 Shellcode Gadget 利用。
 
+不过，因为有 `b''` 的存在，我们可以任意堆 `.,?-![]`，而不会被阻止。
+
 看提示，她说：
 
 > The combination of punctuation and numbers is very useful.
 
 确实，这里的确有那么几个纯数字。而根据判定规则，在两边可以任意添加 `.,?-![]`，而不会遇到问题。
 
-扫出来其实不多的，有这些：
+其实不多的，有这些：
 
 ![image-20201015144619773](notes.assets/image-20201015144619773.png)
 

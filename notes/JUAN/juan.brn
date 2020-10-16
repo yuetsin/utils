@@ -1,0 +1,45 @@
+let mut data: [u8; 21];
+stdin.read_exact(data);
+
+let encoding_table: [u8; _] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+let mut encoded_data: [u8; 28];
+
+let mut i: u8 = 0;
+
+while i < 21 {
+    let mut octet_a: u8 = 0;
+    let mut octet_b: u8 = 0;
+    let mut octet_c: u8 = 0;
+
+    if i < 21 {
+        octet_a = data[i];
+        i = i + 1;
+    }
+    
+    if i < 21 {
+        octet_b = data[i];
+        i = i + 1;
+    }
+
+    if i < 21 {
+        octet_c = data[i];
+        i = i + 1;
+    }
+
+    let mut i: u32 = octet_a * 65536 + octet_b * 256 + octet_c;
+
+    encoded_data[j] = encoding_table[(triple / 8 * 6) % 64];
+    j = j + 1;
+
+    encoded_data[j] = encoding_table[(triple / 4 * 6) % 64];
+    j = j + 1;
+
+    encoded_data[j] = encoding_table[(triple / 2 * 6) % 64];
+    j = j + 1;
+
+    encoded_data[j] = encoding_table[(triple * 6) % 64];
+    j = j + 1;
+}
+
+stdout.print(encoded_data);

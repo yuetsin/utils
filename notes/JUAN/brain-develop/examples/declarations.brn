@@ -1,0 +1,47 @@
+// automatically determine the length of the right
+let a: [u8; _] = b"Hello, world\n";
+// Outputs "Hello, world\n"
+stdout.print(a);
+// error if rhs is not the length declared on the left
+let mut b: [u8; 3] = b"abc";
+stdout.print(b"a: ", a);
+stdout.print(b"b: ", b, b"\n");
+
+// u8 is an 8-bit unsigned numeric type (a byte)
+// In brainfuck, this is equivalent to one "cell"
+let x: u8 = 32;
+// Note: There is a bug open about printing numbers correctly.
+// Currently, numbers greater than 9 will print as punctuation and then letters.
+// This is unfortunate, and will be fixed soon: https://github.com/brain-lang/brain/issues/68
+stdout.println(b"x: ", x);
+
+// invalid because different sizes (addressed in issue #3)
+//a = b;
+
+// redeclaration of the same name with a different size is an error:
+//TODO: This restriction may be lifted in the future.
+//let a: [u8; 1] = b"q";
+
+// copies a to a new variable c. c is the same size as a.
+let c: [u8; _] = a;
+stdout.print(c);
+
+// Invalid:
+//a = a;
+
+// Explicitly declaring the size here even though its a copy
+let d: [u8; 3] = b;
+stdout.print(b"d = ", d, b" (should be abc)\n");
+
+stdout.print(b"b = ", b, b" (should be abc)\n");
+b = b"dbd";
+stdout.print(b"b = ", b, b" (should be dbd)\n");
+b = d;
+stdout.print(b"b = ", b, b" (should be abc)\n");
+
+// Should accept any [a-zA-z0-9_] as identifier names
+// Cannot start with a number
+let qqq: [u8; 2];
+let _bar: [u8; 2];
+// invalid:
+//let 12abc: [u8; _];

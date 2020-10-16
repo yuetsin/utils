@@ -1,0 +1,2166 @@
+
+
+	.text
+main:
+	mov D, SP
+	add D, -1
+	store BP, D
+	mov SP, D
+	mov BP, SP
+	sub SP, 310
+	.file 1 "-"
+	.loc 1 63 0
+	.loc 1 3 0
+	.loc 1 4 0
+	.loc 1 5 0
+	mov A, 0
+	mov B, SP
+	mov B, BP
+	add B, 16776962
+	mov A, 65
+	store A, B
+	mov B, BP
+	add B, 16776963
+	mov A, 66
+	store A, B
+	mov B, BP
+	add B, 16776964
+	mov A, 67
+	store A, B
+	mov B, BP
+	add B, 16776965
+	mov A, 68
+	store A, B
+	mov B, BP
+	add B, 16776966
+	mov A, 69
+	store A, B
+	mov B, BP
+	add B, 16776967
+	mov A, 70
+	store A, B
+	mov B, BP
+	add B, 16776968
+	mov A, 71
+	store A, B
+	mov B, BP
+	add B, 16776969
+	mov A, 72
+	store A, B
+	mov B, BP
+	add B, 16776970
+	mov A, 73
+	store A, B
+	mov B, BP
+	add B, 16776971
+	mov A, 74
+	store A, B
+	mov B, BP
+	add B, 16776972
+	mov A, 75
+	store A, B
+	mov B, BP
+	add B, 16776973
+	mov A, 76
+	store A, B
+	mov B, BP
+	add B, 16776974
+	mov A, 77
+	store A, B
+	mov B, BP
+	add B, 16776975
+	mov A, 78
+	store A, B
+	mov B, BP
+	add B, 16776976
+	mov A, 79
+	store A, B
+	mov B, BP
+	add B, 16776977
+	mov A, 80
+	store A, B
+	mov B, BP
+	add B, 16776978
+	mov A, 81
+	store A, B
+	mov B, BP
+	add B, 16776979
+	mov A, 82
+	store A, B
+	mov B, BP
+	add B, 16776980
+	mov A, 83
+	store A, B
+	mov B, BP
+	add B, 16776981
+	mov A, 84
+	store A, B
+	mov B, BP
+	add B, 16776982
+	mov A, 85
+	store A, B
+	mov B, BP
+	add B, 16776983
+	mov A, 86
+	store A, B
+	mov B, BP
+	add B, 16776984
+	mov A, 87
+	store A, B
+	mov B, BP
+	add B, 16776985
+	mov A, 88
+	store A, B
+	mov B, BP
+	add B, 16776986
+	mov A, 89
+	store A, B
+	mov B, BP
+	add B, 16776987
+	mov A, 90
+	store A, B
+	mov B, BP
+	add B, 16776988
+	mov A, 97
+	store A, B
+	mov B, BP
+	add B, 16776989
+	mov A, 98
+	store A, B
+	mov B, BP
+	add B, 16776990
+	mov A, 99
+	store A, B
+	mov B, BP
+	add B, 16776991
+	mov A, 100
+	store A, B
+	mov B, BP
+	add B, 16776992
+	mov A, 101
+	store A, B
+	mov B, BP
+	add B, 16776993
+	mov A, 102
+	store A, B
+	mov B, BP
+	add B, 16776994
+	mov A, 103
+	store A, B
+	mov B, BP
+	add B, 16776995
+	mov A, 104
+	store A, B
+	mov B, BP
+	add B, 16776996
+	mov A, 105
+	store A, B
+	mov B, BP
+	add B, 16776997
+	mov A, 106
+	store A, B
+	mov B, BP
+	add B, 16776998
+	mov A, 107
+	store A, B
+	mov B, BP
+	add B, 16776999
+	mov A, 108
+	store A, B
+	mov B, BP
+	add B, 16777000
+	mov A, 109
+	store A, B
+	mov B, BP
+	add B, 16777001
+	mov A, 110
+	store A, B
+	mov B, BP
+	add B, 16777002
+	mov A, 111
+	store A, B
+	mov B, BP
+	add B, 16777003
+	mov A, 112
+	store A, B
+	mov B, BP
+	add B, 16777004
+	mov A, 113
+	store A, B
+	mov B, BP
+	add B, 16777005
+	mov A, 114
+	store A, B
+	mov B, BP
+	add B, 16777006
+	mov A, 115
+	store A, B
+	mov B, BP
+	add B, 16777007
+	mov A, 116
+	store A, B
+	mov B, BP
+	add B, 16777008
+	mov A, 117
+	store A, B
+	mov B, BP
+	add B, 16777009
+	mov A, 118
+	store A, B
+	mov B, BP
+	add B, 16777010
+	mov A, 119
+	store A, B
+	mov B, BP
+	add B, 16777011
+	mov A, 120
+	store A, B
+	mov B, BP
+	add B, 16777012
+	mov A, 121
+	store A, B
+	mov B, BP
+	add B, 16777013
+	mov A, 122
+	store A, B
+	mov B, BP
+	add B, 16777014
+	mov A, 48
+	store A, B
+	mov B, BP
+	add B, 16777015
+	mov A, 49
+	store A, B
+	mov B, BP
+	add B, 16777016
+	mov A, 50
+	store A, B
+	mov B, BP
+	add B, 16777017
+	mov A, 51
+	store A, B
+	mov B, BP
+	add B, 16777018
+	mov A, 52
+	store A, B
+	mov B, BP
+	add B, 16777019
+	mov A, 53
+	store A, B
+	mov B, BP
+	add B, 16777020
+	mov A, 54
+	store A, B
+	mov B, BP
+	add B, 16777021
+	mov A, 55
+	store A, B
+	mov B, BP
+	add B, 16777022
+	mov A, 56
+	store A, B
+	mov B, BP
+	add B, 16777023
+	mov A, 57
+	store A, B
+	mov B, BP
+	add B, 16777024
+	mov A, 43
+	store A, B
+	mov B, BP
+	add B, 16777025
+	mov A, 47
+	store A, B
+	mov B, BP
+	add B, 16777026
+	mov A, 65
+	store A, B
+	mov B, BP
+	add B, 16777027
+	mov A, 66
+	store A, B
+	mov B, BP
+	add B, 16777028
+	mov A, 67
+	store A, B
+	mov B, BP
+	add B, 16777029
+	mov A, 68
+	store A, B
+	mov B, BP
+	add B, 16777030
+	mov A, 69
+	store A, B
+	mov B, BP
+	add B, 16777031
+	mov A, 70
+	store A, B
+	mov B, BP
+	add B, 16777032
+	mov A, 71
+	store A, B
+	mov B, BP
+	add B, 16777033
+	mov A, 72
+	store A, B
+	mov B, BP
+	add B, 16777034
+	mov A, 73
+	store A, B
+	mov B, BP
+	add B, 16777035
+	mov A, 74
+	store A, B
+	mov B, BP
+	add B, 16777036
+	mov A, 75
+	store A, B
+	mov B, BP
+	add B, 16777037
+	mov A, 76
+	store A, B
+	mov B, BP
+	add B, 16777038
+	mov A, 77
+	store A, B
+	mov B, BP
+	add B, 16777039
+	mov A, 78
+	store A, B
+	mov B, BP
+	add B, 16777040
+	mov A, 79
+	store A, B
+	mov B, BP
+	add B, 16777041
+	mov A, 80
+	store A, B
+	mov B, BP
+	add B, 16777042
+	mov A, 81
+	store A, B
+	mov B, BP
+	add B, 16777043
+	mov A, 82
+	store A, B
+	mov B, BP
+	add B, 16777044
+	mov A, 83
+	store A, B
+	mov B, BP
+	add B, 16777045
+	mov A, 84
+	store A, B
+	mov B, BP
+	add B, 16777046
+	mov A, 85
+	store A, B
+	mov B, BP
+	add B, 16777047
+	mov A, 86
+	store A, B
+	mov B, BP
+	add B, 16777048
+	mov A, 87
+	store A, B
+	mov B, BP
+	add B, 16777049
+	mov A, 88
+	store A, B
+	mov B, BP
+	add B, 16777050
+	mov A, 89
+	store A, B
+	mov B, BP
+	add B, 16777051
+	mov A, 90
+	store A, B
+	mov B, BP
+	add B, 16777052
+	mov A, 97
+	store A, B
+	mov B, BP
+	add B, 16777053
+	mov A, 98
+	store A, B
+	mov B, BP
+	add B, 16777054
+	mov A, 99
+	store A, B
+	mov B, BP
+	add B, 16777055
+	mov A, 100
+	store A, B
+	mov B, BP
+	add B, 16777056
+	mov A, 101
+	store A, B
+	mov B, BP
+	add B, 16777057
+	mov A, 102
+	store A, B
+	mov B, BP
+	add B, 16777058
+	mov A, 103
+	store A, B
+	mov B, BP
+	add B, 16777059
+	mov A, 104
+	store A, B
+	mov B, BP
+	add B, 16777060
+	mov A, 105
+	store A, B
+	mov B, BP
+	add B, 16777061
+	mov A, 106
+	store A, B
+	mov B, BP
+	add B, 16777062
+	mov A, 107
+	store A, B
+	mov B, BP
+	add B, 16777063
+	mov A, 108
+	store A, B
+	mov B, BP
+	add B, 16777064
+	mov A, 109
+	store A, B
+	mov B, BP
+	add B, 16777065
+	mov A, 110
+	store A, B
+	mov B, BP
+	add B, 16777066
+	mov A, 111
+	store A, B
+	mov B, BP
+	add B, 16777067
+	mov A, 112
+	store A, B
+	mov B, BP
+	add B, 16777068
+	mov A, 113
+	store A, B
+	mov B, BP
+	add B, 16777069
+	mov A, 114
+	store A, B
+	mov B, BP
+	add B, 16777070
+	mov A, 115
+	store A, B
+	mov B, BP
+	add B, 16777071
+	mov A, 116
+	store A, B
+	mov B, BP
+	add B, 16777072
+	mov A, 117
+	store A, B
+	mov B, BP
+	add B, 16777073
+	mov A, 118
+	store A, B
+	mov B, BP
+	add B, 16777074
+	mov A, 119
+	store A, B
+	mov B, BP
+	add B, 16777075
+	mov A, 120
+	store A, B
+	mov B, BP
+	add B, 16777076
+	mov A, 121
+	store A, B
+	mov B, BP
+	add B, 16777077
+	mov A, 122
+	store A, B
+	mov B, BP
+	add B, 16777078
+	mov A, 48
+	store A, B
+	mov B, BP
+	add B, 16777079
+	mov A, 49
+	store A, B
+	mov B, BP
+	add B, 16777080
+	mov A, 50
+	store A, B
+	mov B, BP
+	add B, 16777081
+	mov A, 51
+	store A, B
+	mov B, BP
+	add B, 16777082
+	mov A, 52
+	store A, B
+	mov B, BP
+	add B, 16777083
+	mov A, 53
+	store A, B
+	mov B, BP
+	add B, 16777084
+	mov A, 54
+	store A, B
+	mov B, BP
+	add B, 16777085
+	mov A, 55
+	store A, B
+	mov B, BP
+	add B, 16777086
+	mov A, 56
+	store A, B
+	mov B, BP
+	add B, 16777087
+	mov A, 57
+	store A, B
+	mov B, BP
+	add B, 16777088
+	mov A, 43
+	store A, B
+	mov B, BP
+	add B, 16777089
+	mov A, 47
+	store A, B
+	mov B, BP
+	add B, 16777090
+	mov A, 65
+	store A, B
+	mov B, BP
+	add B, 16777091
+	mov A, 66
+	store A, B
+	mov B, BP
+	add B, 16777092
+	mov A, 67
+	store A, B
+	mov B, BP
+	add B, 16777093
+	mov A, 68
+	store A, B
+	mov B, BP
+	add B, 16777094
+	mov A, 69
+	store A, B
+	mov B, BP
+	add B, 16777095
+	mov A, 70
+	store A, B
+	mov B, BP
+	add B, 16777096
+	mov A, 71
+	store A, B
+	mov B, BP
+	add B, 16777097
+	mov A, 72
+	store A, B
+	mov B, BP
+	add B, 16777098
+	mov A, 73
+	store A, B
+	mov B, BP
+	add B, 16777099
+	mov A, 74
+	store A, B
+	mov B, BP
+	add B, 16777100
+	mov A, 75
+	store A, B
+	mov B, BP
+	add B, 16777101
+	mov A, 76
+	store A, B
+	mov B, BP
+	add B, 16777102
+	mov A, 77
+	store A, B
+	mov B, BP
+	add B, 16777103
+	mov A, 78
+	store A, B
+	mov B, BP
+	add B, 16777104
+	mov A, 79
+	store A, B
+	mov B, BP
+	add B, 16777105
+	mov A, 80
+	store A, B
+	mov B, BP
+	add B, 16777106
+	mov A, 81
+	store A, B
+	mov B, BP
+	add B, 16777107
+	mov A, 82
+	store A, B
+	mov B, BP
+	add B, 16777108
+	mov A, 83
+	store A, B
+	mov B, BP
+	add B, 16777109
+	mov A, 84
+	store A, B
+	mov B, BP
+	add B, 16777110
+	mov A, 85
+	store A, B
+	mov B, BP
+	add B, 16777111
+	mov A, 86
+	store A, B
+	mov B, BP
+	add B, 16777112
+	mov A, 87
+	store A, B
+	mov B, BP
+	add B, 16777113
+	mov A, 88
+	store A, B
+	mov B, BP
+	add B, 16777114
+	mov A, 89
+	store A, B
+	mov B, BP
+	add B, 16777115
+	mov A, 90
+	store A, B
+	mov B, BP
+	add B, 16777116
+	mov A, 97
+	store A, B
+	mov B, BP
+	add B, 16777117
+	mov A, 98
+	store A, B
+	mov B, BP
+	add B, 16777118
+	mov A, 99
+	store A, B
+	mov B, BP
+	add B, 16777119
+	mov A, 100
+	store A, B
+	mov B, BP
+	add B, 16777120
+	mov A, 101
+	store A, B
+	mov B, BP
+	add B, 16777121
+	mov A, 102
+	store A, B
+	mov B, BP
+	add B, 16777122
+	mov A, 103
+	store A, B
+	mov B, BP
+	add B, 16777123
+	mov A, 104
+	store A, B
+	mov B, BP
+	add B, 16777124
+	mov A, 105
+	store A, B
+	mov B, BP
+	add B, 16777125
+	mov A, 106
+	store A, B
+	mov B, BP
+	add B, 16777126
+	mov A, 107
+	store A, B
+	mov B, BP
+	add B, 16777127
+	mov A, 108
+	store A, B
+	mov B, BP
+	add B, 16777128
+	mov A, 109
+	store A, B
+	mov B, BP
+	add B, 16777129
+	mov A, 110
+	store A, B
+	mov B, BP
+	add B, 16777130
+	mov A, 111
+	store A, B
+	mov B, BP
+	add B, 16777131
+	mov A, 112
+	store A, B
+	mov B, BP
+	add B, 16777132
+	mov A, 113
+	store A, B
+	mov B, BP
+	add B, 16777133
+	mov A, 114
+	store A, B
+	mov B, BP
+	add B, 16777134
+	mov A, 115
+	store A, B
+	mov B, BP
+	add B, 16777135
+	mov A, 116
+	store A, B
+	mov B, BP
+	add B, 16777136
+	mov A, 117
+	store A, B
+	mov B, BP
+	add B, 16777137
+	mov A, 118
+	store A, B
+	mov B, BP
+	add B, 16777138
+	mov A, 119
+	store A, B
+	mov B, BP
+	add B, 16777139
+	mov A, 120
+	store A, B
+	mov B, BP
+	add B, 16777140
+	mov A, 121
+	store A, B
+	mov B, BP
+	add B, 16777141
+	mov A, 122
+	store A, B
+	mov B, BP
+	add B, 16777142
+	mov A, 48
+	store A, B
+	mov B, BP
+	add B, 16777143
+	mov A, 49
+	store A, B
+	mov B, BP
+	add B, 16777144
+	mov A, 50
+	store A, B
+	mov B, BP
+	add B, 16777145
+	mov A, 51
+	store A, B
+	mov B, BP
+	add B, 16777146
+	mov A, 52
+	store A, B
+	mov B, BP
+	add B, 16777147
+	mov A, 53
+	store A, B
+	mov B, BP
+	add B, 16777148
+	mov A, 54
+	store A, B
+	mov B, BP
+	add B, 16777149
+	mov A, 55
+	store A, B
+	mov B, BP
+	add B, 16777150
+	mov A, 56
+	store A, B
+	mov B, BP
+	add B, 16777151
+	mov A, 57
+	store A, B
+	mov B, BP
+	add B, 16777152
+	mov A, 43
+	store A, B
+	mov B, BP
+	add B, 16777153
+	mov A, 47
+	store A, B
+	.loc 1 7 0
+	.loc 1 8 0
+	mov A, 0
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 7 0
+	mov A, BP
+	add A, 16776959
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 8 0
+	mov A, 0
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov C, A
+	load A, SP
+	mov B, A
+	mov A, C
+	store B, A
+	load A, SP
+	add SP, 1
+	.loc 1 9 0
+	mov A, 2
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 7 0
+	mov A, BP
+	add A, 16776959
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 9 0
+	mov A, 1
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov C, A
+	load A, SP
+	mov B, A
+	mov A, C
+	store B, A
+	load A, SP
+	add SP, 1
+	.loc 1 10 0
+	mov A, 1
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 7 0
+	mov A, BP
+	add A, 16776959
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 10 0
+	mov A, 2
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov C, A
+	load A, SP
+	mov B, A
+	mov A, C
+	store B, A
+	load A, SP
+	add SP, 1
+	.loc 1 13 0
+	.loc 1 12 0
+	mov A, 0
+	mov B, SP
+	mov B, BP
+	add B, 16776958
+	mov A, 0
+	store A, B
+	.loc 1 13 0
+	.L0:
+	.loc 1 12 0
+	mov B, BP
+	add B, 16776958
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, 21
+	mov B, A
+	load A, SP
+	add SP, 1
+	lt A, B
+	jeq .L12, A, 0
+	jmp .L13
+	.L12:
+	.loc 1 13 0
+	jmp .L2
+	.L13:
+	getc A
+	jne .L14, A, 0
+	mov A, -1
+	.L14:
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 3 0
+	mov A, BP
+	add A, 16777194
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 12 0
+	mov B, BP
+	add B, 16776958
+	load A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov C, A
+	load A, SP
+	mov B, A
+	mov A, C
+	store B, A
+	load A, SP
+	add SP, 1
+	.loc 1 13 0
+	.L1:
+	.loc 1 12 0
+	mov B, BP
+	add B, 16776958
+	load A, B
+	add A, 1
+	mov B, BP
+	add B, 16776958
+	store A, B
+	.loc 1 13 0
+	jmp .L0
+	.L2:
+	.loc 1 16 0
+	mov A, 0
+	mov B, SP
+	mov B, BP
+	add B, 16776957
+	mov A, 21
+	store A, B
+	.loc 1 18 0
+	mov A, 0
+	mov B, SP
+	mov A, 4
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 16 0
+	mov B, BP
+	add B, 16776957
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 18 0
+	mov A, 2
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, 3
+	mov B, A
+	load A, SP
+	add SP, 1
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, .L15
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	jmp __builtin_div
+	.L15:
+	mov A, B
+	add SP, 2
+	mov B, A
+	load A, SP
+	add SP, 1
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, .L16
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	jmp __builtin_mul
+	.L16:
+	mov A, B
+	add SP, 2
+	mov B, BP
+	add B, 16776956
+	store A, B
+	.loc 1 20 0
+	.loc 1 21 0
+	mov A, 0
+	mov B, SP
+	mov B, BP
+	add B, 16776915
+	mov A, 0
+	store A, B
+	.loc 1 22 0
+	mov A, 0
+	mov B, SP
+	mov B, BP
+	add B, 16776914
+	mov A, 0
+	store A, B
+	.loc 1 52 0
+	.loc 1 24 0
+	mov A, 0
+	mov B, SP
+	mov B, BP
+	add B, 16776913
+	mov A, 0
+	store A, B
+	.loc 1 52 0
+	.L3:
+	.loc 1 24 0
+	mov B, BP
+	add B, 16776913
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 16 0
+	mov B, BP
+	add B, 16776957
+	load A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	lt A, B
+	jeq .L17, A, 0
+	jmp .L18
+	.L17:
+	.loc 1 52 0
+	jmp .L5
+	.L18:
+	.loc 1 27 0
+	mov A, 0
+	mov B, SP
+	mov B, BP
+	add B, 16776912
+	mov A, 0
+	store A, B
+	.loc 1 28 0
+	mov A, 0
+	mov B, SP
+	mov B, BP
+	add B, 16776911
+	mov A, 0
+	store A, B
+	.loc 1 29 0
+	mov A, 0
+	mov B, SP
+	mov B, BP
+	add B, 16776910
+	mov A, 0
+	store A, B
+	.loc 1 33 0
+	.loc 1 31 0
+	.loc 1 24 0
+	mov B, BP
+	add B, 16776913
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 16 0
+	mov B, BP
+	add B, 16776957
+	load A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	lt A, B
+	jeq .L19, A, 0
+	.loc 1 33 0
+	.loc 1 32 0
+	.loc 1 3 0
+	mov A, BP
+	add A, 16777194
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 24 0
+	mov B, BP
+	add B, 16776913
+	load A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov B, A
+	load A, B
+	mov B, BP
+	add B, 16776912
+	store A, B
+	.loc 1 33 0
+	.loc 1 24 0
+	mov B, BP
+	add B, 16776913
+	load A, B
+	add A, 1
+	mov B, BP
+	add B, 16776913
+	store A, B
+	.L19:
+	.loc 1 38 0
+	.loc 1 36 0
+	.loc 1 24 0
+	mov B, BP
+	add B, 16776913
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 16 0
+	mov B, BP
+	add B, 16776957
+	load A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	lt A, B
+	jeq .L20, A, 0
+	.loc 1 38 0
+	.loc 1 37 0
+	.loc 1 3 0
+	mov A, BP
+	add A, 16777194
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 24 0
+	mov B, BP
+	add B, 16776913
+	load A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov B, A
+	load A, B
+	mov B, BP
+	add B, 16776911
+	store A, B
+	.loc 1 38 0
+	.loc 1 24 0
+	mov B, BP
+	add B, 16776913
+	load A, B
+	add A, 1
+	mov B, BP
+	add B, 16776913
+	store A, B
+	.L20:
+	.loc 1 43 0
+	.loc 1 41 0
+	.loc 1 24 0
+	mov B, BP
+	add B, 16776913
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 16 0
+	mov B, BP
+	add B, 16776957
+	load A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	lt A, B
+	jeq .L21, A, 0
+	.loc 1 43 0
+	.loc 1 42 0
+	.loc 1 3 0
+	mov A, BP
+	add A, 16777194
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 24 0
+	mov B, BP
+	add B, 16776913
+	load A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov B, A
+	load A, B
+	mov B, BP
+	add B, 16776910
+	store A, B
+	.loc 1 43 0
+	.loc 1 24 0
+	mov B, BP
+	add B, 16776913
+	load A, B
+	add A, 1
+	mov B, BP
+	add B, 16776913
+	store A, B
+	.L21:
+	.loc 1 47 0
+	mov A, 0
+	mov B, SP
+	.loc 1 27 0
+	mov B, BP
+	add B, 16776912
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 47 0
+	mov A, 65536
+	mov B, A
+	load A, SP
+	add SP, 1
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, .L22
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	jmp __builtin_mul
+	.L22:
+	mov A, B
+	add SP, 2
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 28 0
+	mov B, BP
+	add B, 16776911
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 47 0
+	mov A, 256
+	mov B, A
+	load A, SP
+	add SP, 1
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, .L23
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	jmp __builtin_mul
+	.L23:
+	mov A, B
+	add SP, 2
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 29 0
+	mov B, BP
+	add B, 16776910
+	load A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov B, BP
+	add B, 16776909
+	store A, B
+	.loc 1 49 0
+	.loc 1 5 0
+	mov A, BP
+	add A, 16776962
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 49 0
+	.loc 1 47 0
+	mov B, BP
+	add B, 16776909
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 49 0
+	mov A, 8
+	mov B, A
+	load A, SP
+	add SP, 1
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, .L24
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	jmp __builtin_div
+	.L24:
+	mov A, B
+	add SP, 2
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, 6
+	mov B, A
+	load A, SP
+	add SP, 1
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, .L25
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	jmp __builtin_mul
+	.L25:
+	mov A, B
+	add SP, 2
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov B, A
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 20 0
+	mov A, BP
+	add A, 16776916
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 49 0
+	.loc 1 22 0
+	mov B, BP
+	add B, 16776914
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	add A, 1
+	mov B, BP
+	add B, 16776914
+	store A, B
+	load A, SP
+	add SP, 1
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov C, A
+	load A, SP
+	mov B, A
+	mov A, C
+	store B, A
+	load A, SP
+	add SP, 1
+	.loc 1 50 0
+	.loc 1 5 0
+	mov A, BP
+	add A, 16776962
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 50 0
+	.loc 1 47 0
+	mov B, BP
+	add B, 16776909
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 50 0
+	mov A, 4
+	mov B, A
+	load A, SP
+	add SP, 1
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, .L26
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	jmp __builtin_div
+	.L26:
+	mov A, B
+	add SP, 2
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, 6
+	mov B, A
+	load A, SP
+	add SP, 1
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, .L27
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	jmp __builtin_mul
+	.L27:
+	mov A, B
+	add SP, 2
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov B, A
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 20 0
+	mov A, BP
+	add A, 16776916
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 50 0
+	.loc 1 22 0
+	mov B, BP
+	add B, 16776914
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	add A, 1
+	mov B, BP
+	add B, 16776914
+	store A, B
+	load A, SP
+	add SP, 1
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov C, A
+	load A, SP
+	mov B, A
+	mov A, C
+	store B, A
+	load A, SP
+	add SP, 1
+	.loc 1 51 0
+	.loc 1 5 0
+	mov A, BP
+	add A, 16776962
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 51 0
+	.loc 1 47 0
+	mov B, BP
+	add B, 16776909
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 51 0
+	mov A, 2
+	mov B, A
+	load A, SP
+	add SP, 1
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, .L28
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	jmp __builtin_div
+	.L28:
+	mov A, B
+	add SP, 2
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, 6
+	mov B, A
+	load A, SP
+	add SP, 1
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, .L29
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	jmp __builtin_mul
+	.L29:
+	mov A, B
+	add SP, 2
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov B, A
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 20 0
+	mov A, BP
+	add A, 16776916
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 51 0
+	.loc 1 22 0
+	mov B, BP
+	add B, 16776914
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	add A, 1
+	mov B, BP
+	add B, 16776914
+	store A, B
+	load A, SP
+	add SP, 1
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov C, A
+	load A, SP
+	mov B, A
+	mov A, C
+	store B, A
+	load A, SP
+	add SP, 1
+	.loc 1 52 0
+	.loc 1 5 0
+	mov A, BP
+	add A, 16776962
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 52 0
+	.loc 1 47 0
+	mov B, BP
+	add B, 16776909
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 52 0
+	mov A, 6
+	mov B, A
+	load A, SP
+	add SP, 1
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, .L30
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	jmp __builtin_mul
+	.L30:
+	mov A, B
+	add SP, 2
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov B, A
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 20 0
+	mov A, BP
+	add A, 16776916
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 52 0
+	.loc 1 22 0
+	mov B, BP
+	add B, 16776914
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	add A, 1
+	mov B, BP
+	add B, 16776914
+	store A, B
+	load A, SP
+	add SP, 1
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov C, A
+	load A, SP
+	mov B, A
+	mov A, C
+	store B, A
+	load A, SP
+	add SP, 1
+	.loc 1 52 0
+	.L4:
+	.loc 1 24 0
+	.loc 1 21 0
+	mov B, BP
+	add B, 16776915
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 24 0
+	mov A, 1
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov B, BP
+	add B, 16776915
+	store A, B
+	.loc 1 52 0
+	jmp .L3
+	.L5:
+	.loc 1 55 0
+	mov A, 0
+	mov B, SP
+	.loc 1 16 0
+	mov B, BP
+	add B, 16776957
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 55 0
+	.loc 1 16 0
+	mov B, BP
+	add B, 16776957
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 55 0
+	mov A, 3
+	mov B, A
+	load A, SP
+	add SP, 1
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, .L31
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	jmp __builtin_div
+	.L31:
+	mov A, B
+	add SP, 2
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, 3
+	mov B, A
+	load A, SP
+	add SP, 1
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, .L32
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	jmp __builtin_mul
+	.L32:
+	mov A, B
+	add SP, 2
+	mov B, A
+	load A, SP
+	add SP, 1
+	sub A, B
+	mov B, BP
+	add B, 16776908
+	store A, B
+	.loc 1 57 0
+	.loc 1 56 0
+	mov A, 0
+	mov B, SP
+	mov B, BP
+	add B, 16776907
+	mov A, 0
+	store A, B
+	.loc 1 57 0
+	.L6:
+	.loc 1 56 0
+	mov B, BP
+	add B, 16776907
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 7 0
+	mov A, BP
+	add A, 16776959
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 55 0
+	mov B, BP
+	add B, 16776908
+	load A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov B, A
+	load A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	lt A, B
+	jeq .L33, A, 0
+	jmp .L34
+	.L33:
+	.loc 1 57 0
+	jmp .L8
+	.L34:
+	mov A, 61
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 20 0
+	mov A, BP
+	add A, 16776916
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 57 0
+	.loc 1 18 0
+	mov B, BP
+	add B, 16776956
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 57 0
+	mov A, 1
+	mov B, A
+	load A, SP
+	add SP, 1
+	sub A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 56 0
+	mov B, BP
+	add B, 16776907
+	load A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	sub A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov C, A
+	load A, SP
+	mov B, A
+	mov A, C
+	store B, A
+	load A, SP
+	add SP, 1
+	.loc 1 57 0
+	.L7:
+	.loc 1 56 0
+	mov B, BP
+	add B, 16776907
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	add A, 1
+	mov B, BP
+	add B, 16776907
+	store A, B
+	load A, SP
+	add SP, 1
+	.loc 1 57 0
+	jmp .L6
+	.L8:
+	.loc 1 61 0
+	.loc 1 60 0
+	mov A, 0
+	mov B, SP
+	mov B, BP
+	add B, 16776906
+	mov A, 0
+	store A, B
+	.loc 1 61 0
+	.L9:
+	.loc 1 60 0
+	mov B, BP
+	add B, 16776906
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	mov A, 28
+	mov B, A
+	load A, SP
+	add SP, 1
+	lt A, B
+	jeq .L35, A, 0
+	jmp .L36
+	.L35:
+	.loc 1 61 0
+	jmp .L11
+	.L36:
+	.loc 1 20 0
+	mov A, BP
+	add A, 16776916
+	mov D, SP
+	add D, -1
+	store B, D
+	mov SP, D
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	.loc 1 60 0
+	mov B, BP
+	add B, 16776906
+	load A, B
+	mov B, A
+	load A, SP
+	add SP, 1
+	add A, B
+	mov C, A
+	load A, SP
+	add SP, 1
+	mov B, A
+	mov A, C
+	mov B, A
+	load A, B
+	mov D, SP
+	add D, -1
+	store A, D
+	mov SP, D
+	putc A
+	add SP, 1
+	.loc 1 61 0
+	.L10:
+	.loc 1 60 0
+	mov B, BP
+	add B, 16776906
+	load A, B
+	add A, 1
+	mov B, BP
+	add B, 16776906
+	store A, B
+	.loc 1 61 0
+	jmp .L9
+	.L11:
+	.loc 1 63 0
+	mov A, 0
+	mov B, A
+	exit
+	exit
