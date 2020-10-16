@@ -17,6 +17,7 @@ __all__ = [
     'python_challenges_flag3',
     'python_challenges_flag4',
     'shellcode1',
+    'shellcode2',
     'signed_shellcoder',
     'sse',
     'stack_overflow',
