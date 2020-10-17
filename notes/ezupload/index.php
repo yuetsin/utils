@@ -42,15 +42,23 @@ switch($action){
     break;
     case "extract":
         $zip_file = "zip/" . $_POST["file"];
+        
         $zip_temp = "/tmp/zip/" . md5($_SERVER["REMOTE_ADDR"]."ezupload");
         if (!file_exists($zip_temp)){
             mkdir($zip_temp);
         }
+        echo $zip_file . "\n";
+        echo $zip_temp . "\n";
+        echo "mkdir done\n";
         $zip = new \ZipArchive();
+        echo "ZipArchive created\n";
         if ($zip->open($zip_file) === TRUE) {
+            echo "open TRUE";
             $zip->extractTo($zip_temp);
+            echo "extract done";
             $zip->close();
             @unlink($zip_file);
+            echo "unlink done";
             $pngs = glob("$zip_temp/*");
 
             foreach($pngs as $index=>$png){
@@ -67,6 +75,8 @@ switch($action){
                 }
                 imagedestroy($im);
             }
+        } else {
+            echo "open failed\n";
         }
     default:
         echo "welcome to ez-series!";
