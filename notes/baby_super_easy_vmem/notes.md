@@ -2,17 +2,11 @@
 
 又是 Baby，又是 Super Easy…
 
-看起来是把整个内存空间 Dump 下来了
-
-> 300 多 MiB，两个 Baby1090，淦
->
-> > 解压出来 2.15 GiB，淦
+看起来是把整个内存空间 Dump 下来了。
 
 这个是 VMware 虚拟机的内存 Dump 文件，Suspend VM 的时候会保留，以便快速 Resume。
 
-> 我刚刚就 Suspend 了一个 VMware VM……
-
-来人，上 Volatility（不
+> 来人，上 Volatility
 
 ![image-20201012113903780](notes.assets/image-20201012113903780.png)
 
@@ -20,7 +14,7 @@
 
 ![image-20201012113943021](notes.assets/image-20201012113943021.png)
 
-结果出炉。8 世代的 Windows。而且还是昨天晚上新鲜出炉的题目。
+8 世代的 Windows。而且还是昨天晚上新鲜出炉的题目。
 
 指定 Profile 为 `Win8SP1x64`，咱们再来看看运行中的进程：
 
@@ -30,7 +24,7 @@
 
 有没有什么可疑的东西？
 
-最可疑的就是这个 `ruby.exe` 了。她肯定是在跑什么 `ruby flag.rb`。把它找出来。
+最可疑的就是这个 `ruby.exe` 了。或許是在跑什么 `ruby flag.rb`。把它找出来。
 
 > 谁没事在电脑上跑 `ruby.exe` 啊！
 
@@ -80,16 +74,6 @@ environment=production
 
 毛也没有。
 
-桌面上还有个诡异的 EULA.lnk。肯定不是 ffmpeg 带的，人家 GPL 协议发布的，怎么会跟 End Users 签什么 License Agreement。
-
-很容易看出来，这指向的是
-
-```
-C:\Windows\System32\eula.txt
-```
-
-这个文件。但是这个文件并不在所有文件列表中。
-
 再找找图片试试？
 
 ![image-20201012122847417](notes.assets/image-20201012122847417.png)
@@ -112,7 +96,7 @@ C:\Windows\System32\eula.txt
 
 这就是专供 IE 测试的 Windows 8.1 版本啦。
 
-打印一下命令行参数，一切都清楚了。
+終於想起來打印一下命令行参数，一切都清楚了。
 
 ![image-20201012123806615](notes.assets/image-20201012123806615.png)
 

@@ -226,3 +226,5 @@ http://111.186.57.85:30042/Public/statics/umeditor1_2_3/php/upload/20201012/1602
 就可以执行了。
 
 唯一的问题就是：怎么找到那个 `__destruct` 中 `echo` 的 Vulnerable 函数。
+
+大概要通过一堆调用链来利用吧…但是我不会…

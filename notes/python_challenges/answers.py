@@ -39,7 +39,7 @@ results = {
     # repr 成字符形式之後，
     # 不能有数字、+、-、[]、()、{}。不能有额外的引号。
     # https://docs.python.org/3/library/constants.html 这里有大量的常数字符串（笑）
-    # 但是，这个沙雕程序用的是 ast.literal_eval parse 输入。
+    # 但是，程序用的是 ast.literal_eval 来 parse 输入。
     # 多亏了他，NotImplemented、float('nan'), float('inf') 都被他挡掉了。
     # 当然，还有 site 的那一堆，license、copyright、__name__ 之类的。
     # 实际上，所有需要运算、寻址的全部都被挡了。
@@ -120,8 +120,7 @@ results = {
     # zz eval 之后都得是 numbers。
     # 而且，type(zz)(z) 失败，就是说不能直接做这种转换。
     # z 可以是复数，2+4j 可以被 ast eval，但是也可以被 complex 构造。不合题意。
-    # 复数好像可以、bool 好像可以，但是最後都落在一个问题：
-    # type(zz)(z) 不会失败。
+    #
     # Complex 的问题：在加号两边有空格的时候，ast 成功，complex() 构造函数失败。
     # bool 呢？传入任何 str 作为构造函数都会成功。为 "" 就返回 False，否则 True。
     # 也就是说， bool("False") == True。
@@ -130,11 +129,11 @@ results = {
     21: "b'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii'",
     # 随手揉了一下键盘就过了……
     # 果然是因为写漏了 = 的匹配（笑死
-    # 可现在 bug 已经被修了，淦
+    #
     # 实际上，BASE64 的标准是每 76 个字符中出一个换行符。
     # 而这里用的是 rstrip。所以输入一个超长字符串即可。哈哈哈哈。
-    # 注意，这个垃圾检测程序有个 GLOBAL_MAX_LENGTH 限制 100。
-    # 还好我们只需要 76 个就够了。
+    # 注意，这个检测程序将 GLOBAL_MAX_LENGTH 限制为 100。
+    # 还好我们用不着那么多。
 
     22: ("baba", 'rot13', b"abab", 'base64'),
     # 要求一个四元组。分别是 str、str、byte、str。
@@ -193,7 +192,7 @@ results = {
     # 试出来的。
     # 估摸着斜杠一多就得出问题。啊果然。
 
-    32: "零000000",
+    32: "??????????????",
     # 若干个数字组成。
     # 第一个字符不是 '0'，
     # int() 要是 0？
@@ -206,7 +205,7 @@ results = {
     # 1. 单独解析（parse）都报错。
     # 2. 加上一对括号就正确。
     # 里面还不能有特殊符号 ()[]{}''""\_#……。
-    # 这我一个都找不出来，你让我找两个（还得不重复）？
+    # 这我一个都找不出来，但是这里要两个（还得不重复字符）？
     # 我是垃圾，走了
 
     34: "'import math as x'",
@@ -305,7 +304,7 @@ results = {
     # 我发现如果给一个超长的 \n 列，那么 eval 会失败，而 exec 会成功。
     # ……可惜这里的要求是相反的…
 
-    42: "'**kwargs:bytearra', ''",
+    42: "??????????????",
     # 要让下面的代码正常执行：
     # def foo(x, {ans1}y):
     #     pass
@@ -337,7 +336,6 @@ results = {
     # 下一个，bar(1, y=2) 成立但是 bar(x=1,y=2) 不成立。
     # 因为第一个参数的名字就叫做 x，
     # 所以 x=1 会被直接解读成第一个参数填入。怎么办！
-    #
 
     43: '"*x,*y", "**x,**y"',
     # 特殊字符不要。
@@ -347,7 +345,6 @@ results = {
     # ……
     # 如果有这么简单就好了。
     # 但是，他这里要求，外面必须套一层 [] 和 {}。
-    # 「有病吧」.png
     # 写成 [i for i in [x + y]] 当然可以，但这样就用了更多的字母。
     # Python >= 3.5 alternative: [*l1, *l2]，用来配合可变长参数的。
     # 那马上就能想到对应 dict 的 **x, **y 了吧。
@@ -461,7 +458,7 @@ results = {
     # 最特别的是，x 在被赋值之后，居然在 __dict__ 之中找不到！有这样的 ID 吗？
     # 我想不出来
 
-    50: [("", "or"), ('raise ', "+"), ("", ",lambda x:")],
+    50: [("??????????????", "or"), ('raise ', "+"), ("??????????????", ",lambda x:")],
     # 要求，给出一组 前缀 和 op，使得
     # 这段代码不会爆炸：
     # {prefix}
@@ -488,5 +485,4 @@ results = {
     # 删掉 ZeroDivisionError？那样会抛出另一个 NameError。别想了。
     # SystemExit 也被 ban 掉了…
     # 好绝望啊。
-
 }

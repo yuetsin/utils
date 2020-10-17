@@ -1,26 +1,16 @@
 # Old School Website
 
-> 建议使用1024*768以下分辨率浏览！
+> 建议使用IE6、1024*768以下分辨率浏览！
 
 居然还接入了 jAccount 接口。
 
-这个 `jaLogin` 有个特点就是会传入 `retUrl` 做回调。我觉得或许可以拿这个来做点什么。
+众所周知，jAccount 接口会返回一大堆数据，包括我的名字和学号。当然都是加密过的，每个应用都有独立的密钥。
 
-首先，拿到的 `retUrl` 格式是这样的：
+> 如果能找 NIC 把我的学号改成 `19260817`，那应该就可以成功看到 Flag 了吧。
 
-```
-https://jaccount.sjtu.edu.cn/jaccount/jalogin?sid=jasjtu1896111019&returl=CFP9tf4xlX1URRO20zOLKNwZiHysxD4ZA2Ktwiz965efUC8kdRDjk6yHBIvpLIt7%2BA%3D%3D&se=CFOcTtUykD0%2B9gmzac14CVX5akBK2Ndk5sqWrbzZKdTcIInQogT%2FtcPny4WUHn3xxA%3D%3D
-```
+或者，直接 Crack 掉加密演算法，截获传回网站的数据包（就是 `jatkt` 那一堆），并且篡改其中的内容（冒充易赛挺会长），应该也可以实现。
 
-把 retUrl 解码得到：
-
-```
-CFP9tf4xlX1URRO20zOLKNwZiHysxD4ZA2Ktwiz965efUC8kdRDjk6yHBIvpLIt7+A==
-```
-
-看起来好像 Base64 啊！但是解码出来完全看不懂。
-
-在[这个项目](https://github.com/SweenEy1130/MobileCheckIn/blob/master/admin.py)里有具体的编码方式：
+那么 jAccount 登录协议具体是怎样的呢？在[这个项目](https://github.com/SweenEy1130/MobileCheckIn/blob/master/admin.py)里可以查到：
 
 ```python
 
@@ -51,17 +41,15 @@ def decrypt(data,iv):
 	return k
 ```
 
-的确是 Base64，但是在此之前还走了一遍 `triple_des` 的加密。
-
 ![image-20201016094052806](notes.assets/image-20201016094052806.png)
 
-> 这家伙居然把密钥传上来了…
+> 这家伙居然把密钥也传上来了…
 
 但是每个项目有独立的密钥，这个肯定不能拿来直接用。
 
-不过可以看到，她这里的 jAccount 请求不是直接发给服务器的，而是通过了 `http://111.186.57.85:30060/jaccount?jatkt=???????` 过了一遍的。非常可疑。
+jAccount 的 jaLogin 模块返回数据後，会通过 `http://111.186.57.85:30060/jaccount?jatkt=???????` 交给服务器鉴权。如果我们能够伪造会长的 `jatkt`，发到这里，问题就解决了。
 
-或许我们可以构造一些恶意的 `jatkt` 发给服务器。但是根据那位哥们的代码，这同样也是需要 DES + IV 解密的。
+> 但是，我没有你的 key，也不知道该怎么猜测 `iv`。
 
 ![image-20201016095930795](notes.assets/image-20201016095930795.png)
 

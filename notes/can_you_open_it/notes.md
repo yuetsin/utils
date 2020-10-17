@@ -14,9 +14,8 @@ Dump 文件的方式，这里用的是 `od <file> -x --endian=big -v -An`。
 
 这样弄出来的就可以直接粘贴进 Hex Fiend 了。
 
-> Update：出题人良心发现，为了体现这不是 Reverse 题，把 loaders 和源代码放出来了
+> Update：出题人良心发现，把 loaders 和源代码放出来了
 >
-> 我谢谢您！
 
 ## Level 0
 
@@ -213,15 +212,11 @@ seccomp-tools dump ./loader2
 
 ```
 
-> 顺带一提，这个库作者专门拿出来吹的「Colorful Output」功能，在 Debian 的垃圾浅色终端背景下快把我看瞎了
+> 顺带一提，这个库作者专门拿出来吹的「Colorful Output」功能，配上浅色终端背景下快把我看瞎了
 
 因为有 `ARCH_X86_64` 判定，而且有 `>= 0x40000000` 检测（因为所有的 32 位 SysCall 都有 `X32_SYSCALL_BIT = 0x40000000`），所以偷 arch 换柱就别想了。
 
 除此之外，就只禁止掉了 `open` 和 `openat`。但是基本所有的 Linux 命令都会 `openat` 来动态链接 libc。
-
-但是，就像 ICS 那一章里讲到的，负责链接的 Dynamic Linker 不能是动态链接的——否则容易产生 `WinRarInstaller.rar` 这样的搞笑事件。
-
-某一些 Linux 发行版提供这个文件。很遗憾，这里没有。
 
 而 `ld-linux.so` 在不指定某些参数的情况下也可以运行。并且，甚至还有这种用法：
 
@@ -229,7 +224,7 @@ seccomp-tools dump ./loader2
 bash$ /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 /bin/cat secret2.txt
 ```
 
-遗憾的是，`./loader2` 的 seccomp 机制仍然会铁面无私地把他们拦住。错误发生在 `open /bin/cat` 这一步。
+遗憾的是，`./loader2` 的 seccomp 机制仍然会拦住 `open /bin/cat` 这一步。
 
 如果用 `--inhibit-cache` 禁止读取 LD Cache，几乎所有的程序都不能正常执行了。
 
