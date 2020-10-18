@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
+from binascii import hexlify
 from pwnlib.util.packing import u64, p64, u32, p32
 
 target_bytes = b'\x44\x69\xbf\xa6\x56\x7b\xf8\x17\x4f\xe2\x6b\x87\xa0\xba\xd8\x35'
 
-keybox_1 = [0x0D76AA478, 0x0E8C7B756, 0x242070DB, 0x0C1BDCEEE, 0x0F57C0FAF,
+keybox_1 = [0xD76AA478, 0xE8C7B756, 0x242070DB, 0xC1BDCEEE, 0xF57C0FAF,
             0x4787C62A, 0x0A8304613, 0x0FD469501, 0x698098D8, 0x8B44F7AF,
             0x0FFFF5BB1, 0x895CD7BE, 0x6B901122, 0x0FD987193, 0x0A679438E,
             0x49B40821, 0x0F61E2562, 0x0C040B340, 0x265E5A51, 0x0E9B6C7AA,
@@ -27,7 +28,8 @@ keybox_2 = [0x7, 0xC, 0x11, 0x16, 0x7, 0xC, 0x11, 0x16, 0x7, 0xC, 0x11, 0x16,
 
 
 def judge(s: str) -> bool:
-    bts = s.encode().ljust(56, b'\0') + bytes([0x98] + [0x0] * 7)
+    lens = len(s) * 8
+    bts = s.encode().ljust(56, b'\0') + bytes([lens]).ljust(8, b'\0')
 
     nums = []
     for i in range(0, 64, 4):
@@ -35,44 +37,57 @@ def judge(s: str) -> bool:
                     (bts[i + 2] << 16) | (bts[i + 3] << 24))
 
     print("build nums", nums)
-    v9 = 0x67452301
-    v10 = 0xEFCDAB89
-    v11 = 0x98BADCFE
-    v12 = 0x10325476
+    v3 = 0x67452301
+    v4 = 0xEFCDAB89
+    v5 = 0x98BADCFE
+    v6 = 0x10325476
 
     for m in range(64):
+        v9 = v3
+        v10 = v4
+        v11 = v5
+        v12 = v6
         if m > 47:
             v13 = v11 ^ (v10 | ~v12)
-            v14 = 7 * m & 0xF
+            v14 = (7 * m) & 0xF
         elif m > 31:
             v13 = v12 ^ v11 ^ v10
             v14 = (3 * m + 5) & 0xF
         elif m > 15:
-            v13 = v12 & v10 | v11 & ~v12
+            v13 = (v12 & v10) | (v11 & ~v12)
             v14 = (5 * m + 1) & 0xF
         else:
-            v13 = v11 & v10 | v12 & ~v10
+            v13 = (v11 & v10) | (v12 & ~v10)
             v14 = m
 
         v1 = v12
         v12 = v11
         v11 = v10
-        v10 += (v9 + v13 + keybox_1[m] + nums[v14]) << keybox_2[m]
+        v10 += ((v9 + v13 + keybox_1[m] + nums[v14]) << keybox_2[m] % 2**32)
         v9 = v1
 
+        # v9 %= 2**32
+        # v10 %= 2**32
+        # v11 %= 2**32
+        # v12 %= 2**32
         # simulates C-int overflow
-        v9 %= 2**32
-        v10 %= 2**32
-        v11 %= 2**32
-        v12 %= 2**32
+        v3 += v9
+        v4 += v10
+        v5 += v11
+        v6 += v12
 
-    print(v9, v10, v11, v12)
-    current_bytes = v9.to_bytes(4, byteorder='little') + v10.to_bytes(4, byteorder='little') + \
-        v11.to_bytes(4, byteorder='little') + \
-        v12.to_bytes(4, byteorder='little')
+        v3 %= 2**32
+        v4 %= 2**32
+        v5 %= 2**32
+        v6 %= 2**32
 
-    print(current_bytes)
-    print(target_bytes)
+        # print(v9, v10, v11, v12)
+    current_bytes = v3.to_bytes(4, byteorder='little') + v4.to_bytes(4, byteorder='little') + \
+        v5.to_bytes(4, byteorder='little') + \
+        v6.to_bytes(4, byteorder='little')
+
+    print(hexlify(current_bytes).decode())
+    # print(hexlify(target_bytes).decode())
     if target_bytes == current_bytes:
         return False
     else:
@@ -81,7 +96,7 @@ def judge(s: str) -> bool:
 
 flag = input("Your flag: ")
 
-assert(len(flag) == 19)
+# assert(len(flag) == 19)
 
 if not judge(flag):
     print("I'm pretty sure it's the flag!")
