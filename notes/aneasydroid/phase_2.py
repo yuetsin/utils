@@ -109,7 +109,6 @@ obfs_keybox = [122, 84, 115, 73, 48, 49, 104, 116, 78, 85, 70, 47, 86, 111, 69, 
 # 只能开一个 C++ 项目写了
 # 而且，这种 swap 写法在产生的 v1、v2 一样的时候就把某一位置为 0 啦！
 # 实际上确实有那么几位是 0…
-# 这个 shuffle 算法写得太搞笑了…
 
 obfs_key = "CGQGVM1cCMzSqpNxqI0WVwuMoM3rq9V8VKoco9qXC9C="
 

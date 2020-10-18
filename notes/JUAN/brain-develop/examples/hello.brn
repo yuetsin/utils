@@ -1,8 +1,0 @@
-/**
- * Welcome to brain!
- */
-
-// This beginner program is traditionally used to demonstrate
-// basic functionality by showing a simple message on the screen
-
-stdout.println(b"Hello, world!");

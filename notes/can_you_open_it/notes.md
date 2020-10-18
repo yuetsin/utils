@@ -230,3 +230,4 @@ bash$ /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 /bin/cat secret2.txt
 
 发现 `/tmp` 目录我们有写、chmod 的权限。或许可以在这里做点什么。
 
+> 最後也没做出来

@@ -44,8 +44,4 @@ x = np.linalg.solve(a, b)
 print(x)
 
 for ch in x:
-
     print(chr(int(round(ch))), end='')
-
-# 要求是 keybox 和 v31 完全一致（xor 一个都没有）。
-# 这个位之间就不相互干扰了，很容易可以得到结果。
