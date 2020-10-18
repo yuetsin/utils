@@ -10,6 +10,7 @@ __all__ = [
     'format_string',
     'game',
     'homework',
+    'mdx',
     'mogictower',
     'note',
     'python_challenges_flag1',
